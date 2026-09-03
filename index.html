@@ -678,9 +678,10 @@ canvas { width: 100% !important; }
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 <script>
 // ── Auth ─────────────────────────────────────────────────────────────────
+// ⚠️ 明文密码已移除，部署前请在此填回（或改为后端鉴权）
 const USERS = [
-  { username: 'admin', password: 'sm_admin_9988', displayName: '管理员' },
-  { username: 'manager', password: 'sm_mgr_2026', displayName: '运营主管' },
+  { username: 'admin', password: 'CHANGE_ME', displayName: '管理员' },
+  { username: 'manager', password: 'CHANGE_ME', displayName: '运营主管' },
 ];
 
 let currentUser = null;
