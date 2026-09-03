@@ -424,14 +424,13 @@ canvas { width: 100% !important; }
 
 
 /* Latest day card */
-.summary-grid-inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 1rem; }
+.summary-grid-inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
 .latest-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1rem 1.25rem;
   box-shadow: var(--shadow);
-  margin-bottom: 1rem;
 }
 .latest-title {
   font-family: 'Noto Serif SC', serif;
@@ -515,10 +514,10 @@ canvas { width: 100% !important; }
 
 <div class="container">
 
-  <!-- Summary Cards -->
-  <div id="summaryCards"></div>
+  <!-- 第1行：各项目最近一日数据（置顶） -->
+  <div id="latestDataContainer" style="margin-bottom: 1rem;"></div>
 
-  <!-- 筛选栏：始终显示 -->
+  <!-- 第2行：项目筛选和时间筛选栏 -->
   <div class="toolbar">
     <div class="toolbar-group">
       <label>项目</label>
@@ -533,6 +532,9 @@ canvas { width: 100% !important; }
     </div>
     <button class="btn btn-primary" id="addBtn" onclick="requireLogin(null)" style="white-space:nowrap">＋ 添加数据</button>
   </div>
+
+  <!-- 第3行：顶部数据块（汇总统计卡片） -->
+  <div id="summaryCards" style="margin-bottom: 1rem;"></div>
 
   <!-- Tabs -->
   <div class="tabs">
@@ -996,7 +998,8 @@ function renderSummary(rows, allData) {
     latestBlock = '<div class="latest-card"><div class="latest-title">📍 各项目最近一日数据</div><div class="latest-grid">' + projectBlocks + '</div></div>';
   }
 
-  document.getElementById('summaryCards').innerHTML = '<div class="summary-grid-inner">' + statCards + '</div>' + latestBlock;
+  document.getElementById('summaryCards').innerHTML = '<div class="summary-grid-inner">' + statCards + '</div>';
+  document.getElementById('latestDataContainer').innerHTML = latestBlock;
 }
 
 // ── Filter Options ────────────────────────────────────────────────────────
